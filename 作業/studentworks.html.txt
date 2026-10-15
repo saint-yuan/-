@@ -1,0 +1,1333 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>學生作品展示館 | 慈濟大學 經營管理學系</title>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts for Traditional Calligraphic & Elegant Serif feel -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Serif+TC:wght@400;600;700;900&family=Cinzel:wght@500;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ==========================================================================
+           1. CHINESE CLASSICAL PALETTE & VARIABLES
+           ========================================================================== */
+        :root {
+            --vermilion-crimson: #8B0000;
+            --vermilion-bright: #9B111E;
+            --ink-black: #1A1A1A;
+            --ink-slate: #2B2B2B;
+            --antique-gold: #C5A059;
+            --gold-bright: #D4AF37;
+            --bamboo-green: #2D5A27;
+            --jade-tint: #e8f0e8;
+            --paper-cream: #FDFBF7;
+            --paper-dark: #F4EBE1;
+            --border-amber: #D9C5A0;
+            --shadow-ink: 0 10px 30px rgba(26, 26, 26, 0.08);
+            --transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+            --font-serif: 'Noto Serif TC', serif;
+            --font-calli: 'Ma Shan Zheng', cursive, serif;
+            --font-en: 'Cinzel', serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-serif);
+            color: var(--ink-slate);
+            background-color: var(--paper-cream);
+            background-image: 
+                radial-gradient(rgba(197, 160, 89, 0.05) 1px, transparent 0),
+                radial-gradient(rgba(139, 0, 0, 0.03) 1px, transparent 0);
+            background-size: 40px 40px;
+            background-position: 0 0, 20px 20px;
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Calligraphic Section Titles */
+        .section-title {
+            text-align: center;
+            margin-bottom: 3.5rem;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-family: var(--font-serif);
+            font-size: 2.4rem;
+            font-weight: 900;
+            color: var(--vermilion-crimson);
+            letter-spacing: 3px;
+            display: inline-block;
+            position: relative;
+            padding: 0 1.5rem;
+        }
+
+        .section-title h2::before,
+        .section-title h2::after {
+            content: '『';
+            color: var(--antique-gold);
+            font-size: 1.8rem;
+            vertical-align: middle;
+        }
+        .section-title h2::after {
+            content: '』';
+        }
+
+        .section-title p {
+            color: var(--antique-gold);
+            font-family: var(--font-en);
+            font-weight: 700;
+            font-size: 0.95rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-top: 0.5rem;
+        }
+
+        /* Red Seals & Badges (朱紅印章) */
+        .seal-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid var(--vermilion-crimson);
+            color: var(--vermilion-crimson);
+            background-color: rgba(139, 0, 0, 0.04);
+            padding: 0.2rem 0.7rem;
+            font-weight: 700;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            border-radius: 4px;
+            position: relative;
+        }
+
+        .seal-badge::before {
+            content: '';
+            position: absolute;
+            top: 2px; left: 2px; right: 2px; bottom: 2px;
+            border: 1px dashed var(--vermilion-crimson);
+            opacity: 0.4;
+            pointer-events: none;
+        }
+
+        .seal-badge-gold {
+            border-color: var(--antique-gold);
+            color: var(--antique-gold);
+            background-color: rgba(197, 160, 89, 0.08);
+        }
+        .seal-badge-gold::before {
+            border-color: var(--antique-gold);
+        }
+
+        .seal-badge-green {
+            border-color: var(--bamboo-green);
+            color: var(--bamboo-green);
+            background-color: var(--jade-tint);
+        }
+        .seal-badge-green::before {
+            border-color: var(--bamboo-green);
+        }
+
+        .seal-badge-blue {
+            border-color: #1E3A8A;
+            color: #1E3A8A;
+            background-color: #EFF6FF;
+        }
+        .seal-badge-blue::before {
+            border-color: #1E3A8A;
+        }
+
+        /* Classical Button */
+        .btn-classical {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.6rem 1.4rem;
+            background-color: var(--vermilion-crimson);
+            color: #ffffff;
+            border: 1px solid var(--antique-gold);
+            font-family: var(--font-serif);
+            font-weight: 700;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 4px 12px rgba(139, 0, 0, 0.25);
+        }
+
+        .btn-classical:hover {
+            background-color: var(--vermilion-bright);
+            color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(139, 0, 0, 0.35);
+        }
+
+        /* ==========================================================================
+           2. HEADER & NAVBAR
+           ========================================================================== */
+        .top-notice {
+            background-color: var(--ink-black);
+            color: var(--paper-dark);
+            font-size: 0.85rem;
+            padding: 0.4rem 0;
+            border-bottom: 1px solid var(--antique-gold);
+        }
+
+        .top-notice .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .top-notice a {
+            color: var(--antique-gold);
+            margin-left: 1.2rem;
+        }
+        .top-notice a:hover {
+            color: #ffffff;
+        }
+
+        .navbar {
+            background-color: var(--paper-cream);
+            border-bottom: 2px solid var(--antique-gold);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow-ink);
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 90px;
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+        }
+
+        .chinese-stamp {
+            width: 50px;
+            height: 50px;
+            background-color: var(--vermilion-crimson);
+            color: var(--paper-cream);
+            border: 2px solid var(--gold-bright);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-calli);
+            font-size: 1.8rem;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.3);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .brand-text h1 {
+            font-size: 1.4rem;
+            font-weight: 900;
+            color: var(--vermilion-crimson);
+            letter-spacing: 2px;
+            line-height: 1.2;
+        }
+
+        .brand-text span {
+            font-family: var(--font-en);
+            font-size: 0.72rem;
+            color: var(--antique-gold);
+            letter-spacing: 1px;
+            display: block;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-item {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--ink-black);
+            padding: 0.5rem 0;
+            position: relative;
+            letter-spacing: 1px;
+        }
+
+        .nav-item::after {
+            content: '──';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%) scaleX(0);
+            color: var(--vermilion-crimson);
+            transition: var(--transition);
+        }
+
+        .nav-item:hover::after,
+        .nav-item.active::after {
+            transform: translateX(-50%) scaleX(1);
+        }
+
+        .nav-item:hover,
+        .nav-item.active {
+            color: var(--vermilion-crimson);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .lang-btn {
+            background: transparent;
+            border: 1px solid var(--antique-gold);
+            color: var(--vermilion-crimson);
+            padding: 0.35rem 0.9rem;
+            font-family: var(--font-serif);
+            font-weight: 700;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .lang-btn:hover {
+            background-color: var(--vermilion-crimson);
+            color: var(--paper-cream);
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.6rem;
+            color: var(--vermilion-crimson);
+            cursor: pointer;
+        }
+
+        /* ==========================================================================
+           3. BANNER / HERO AREA (畫軸風格)
+           ========================================================================== */
+        .page-banner {
+            padding: 4rem 0;
+            background: linear-gradient(180deg, var(--paper-dark) 0%, var(--paper-cream) 100%);
+            border-bottom: 1px solid var(--border-amber);
+            position: relative;
+        }
+
+        .scroll-header-frame {
+            background-color: #2b1f1d;
+            border-radius: 12px;
+            padding: 16px 0;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            border: 2px solid var(--antique-gold);
+            text-align: center;
+        }
+
+        .scroll-header-inner {
+            background: var(--paper-cream);
+            border-top: 3px dashed var(--antique-gold);
+            border-bottom: 3px dashed var(--antique-gold);
+            padding: 2.5rem;
+            position: relative;
+        }
+
+        .scroll-header-inner h1 {
+            font-family: var(--font-serif);
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--vermilion-crimson);
+            margin-bottom: 0.8rem;
+            letter-spacing: 2px;
+        }
+
+        .scroll-header-inner p {
+            font-size: 1.1rem;
+            color: var(--ink-slate);
+            max-width: 750px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* ==========================================================================
+           4. PORTFOLIO FILTER & SEARCH SECTION
+           ========================================================================== */
+        .portfolio-section {
+            padding: 5rem 0 7rem;
+        }
+
+        .filter-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .filter-tabs {
+            display: flex;
+            gap: 0.6rem;
+            border-bottom: 2px solid var(--antique-gold);
+            padding-bottom: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 0.5rem 1.2rem;
+            border: 1px solid transparent;
+            background: transparent;
+            font-family: var(--font-serif);
+            font-weight: 700;
+            font-size: 0.98rem;
+            color: var(--ink-slate);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .tab-btn.active {
+            color: var(--vermilion-crimson);
+            border-color: var(--vermilion-crimson);
+            background-color: var(--paper-cream);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .search-box {
+            position: relative;
+            min-width: 300px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 0.65rem 1rem 0.65rem 2.6rem;
+            border: 1px solid var(--antique-gold);
+            background: var(--paper-cream);
+            font-family: var(--font-serif);
+            outline: none;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .search-box input:focus {
+            border-color: var(--vermilion-crimson);
+            box-shadow: 0 0 0 3px rgba(139, 0, 0, 0.1);
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--antique-gold);
+        }
+
+        /* ==========================================================================
+           5. WORKS GRID & CARDS
+           ========================================================================== */
+        .works-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2.2rem;
+        }
+
+        .work-card {
+            background: var(--paper-cream);
+            border: 1px solid var(--border-amber);
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: var(--shadow-ink);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .work-card::before {
+            content: '✦';
+            position: absolute;
+            top: 8px; left: 8px;
+            color: var(--antique-gold);
+            font-size: 0.75rem;
+            z-index: 5;
+        }
+
+        .work-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--vermilion-crimson);
+            box-shadow: 0 15px 35px rgba(139, 0, 0, 0.12);
+        }
+
+        .work-cover {
+            height: 210px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .work-cover-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(26,26,26,0.65) 100%);
+            display: flex;
+            align-items: flex-end;
+            padding: 1rem;
+        }
+
+        .work-body {
+            padding: 1.8rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .work-title {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--ink-black);
+            margin-bottom: 0.6rem;
+            line-height: 1.4;
+        }
+
+        .work-authors {
+            font-size: 0.88rem;
+            color: var(--antique-gold);
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+
+        .work-desc {
+            font-size: 0.92rem;
+            color: var(--ink-slate);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+            flex-grow: 1;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .work-footer {
+            padding-top: 1rem;
+            border-top: 1px dashed var(--border-amber);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Interactive Stamp / Like Button */
+        .stamp-btn {
+            background: transparent;
+            border: 1px solid var(--vermilion-crimson);
+            color: var(--vermilion-crimson);
+            padding: 0.35rem 0.8rem;
+            font-family: var(--font-serif);
+            font-weight: 700;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            border-radius: 4px;
+            position: relative;
+        }
+
+        .stamp-btn:hover, .stamp-btn.stamped {
+            background-color: var(--vermilion-crimson);
+            color: var(--paper-cream);
+        }
+
+        .stamp-btn.stamped::after {
+            content: '印';
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--antique-gold);
+            color: var(--ink-black);
+            font-size: 0.65rem;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        /* ==========================================================================
+           6. FOOTER
+           ========================================================================== */
+        footer {
+            background-color: var(--ink-black);
+            color: var(--paper-cream);
+            padding-top: 5rem;
+            padding-bottom: 2rem;
+            border-top: 3px solid var(--antique-gold);
+            position: relative;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .footer-brand h2 {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--antique-gold);
+            margin-bottom: 0.4rem;
+            letter-spacing: 2px;
+        }
+
+        .footer-brand p.sub {
+            color: #888;
+            font-family: var(--font-en);
+            font-size: 0.82rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .footer-brand p.desc {
+            color: #ccc;
+            font-size: 0.92rem;
+            line-height: 1.8;
+        }
+
+        .footer-col h4 {
+            font-size: 1.1rem;
+            color: var(--antique-gold);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.6rem;
+        }
+
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0;
+            width: 35px; height: 2px;
+            background-color: var(--vermilion-crimson);
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: #bbb;
+            font-size: 0.92rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--antique-gold);
+            padding-left: 5px;
+        }
+
+        .contact-info li {
+            display: flex;
+            gap: 0.8rem;
+            color: #bbb;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            align-items: flex-start;
+        }
+
+        .contact-info i {
+            color: var(--vermilion-crimson);
+            margin-top: 0.3rem;
+        }
+
+        .footer-bottom {
+            padding-top: 2rem;
+            border-top: 1px solid #333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            color: #777;
+        }
+
+        /* ==========================================================================
+           7. DETAIL MODAL POPUP
+           ========================================================================== */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(26, 26, 26, 0.78);
+            backdrop-filter: blur(5px);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--paper-cream);
+            border: 2px solid var(--antique-gold);
+            border-radius: 4px;
+            max-width: 750px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            padding: 2.5rem;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.35);
+            animation: modalFade 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        @keyframes modalFade {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem; right: 1rem;
+            background: transparent;
+            border: 1px solid var(--antique-gold);
+            color: var(--vermilion-crimson);
+            width: 38px; height: 38px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .modal-close:hover {
+            background-color: var(--vermilion-crimson);
+            color: var(--paper-cream);
+        }
+
+        .modal-header {
+            margin-bottom: 1.5rem;
+            border-bottom: 1px dashed var(--border-amber);
+            padding-bottom: 1rem;
+        }
+
+        .modal-header h3 {
+            font-size: 1.6rem;
+            color: var(--vermilion-crimson);
+            margin-top: 0.6rem;
+            line-height: 1.4;
+            font-weight: 800;
+        }
+
+        .modal-meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            background-color: var(--paper-dark);
+            padding: 1rem 1.2rem;
+            border: 1px solid var(--border-amber);
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .modal-body {
+            color: var(--ink-slate);
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-top: 1.5rem;
+        }
+
+        .modal-body h4 {
+            color: var(--vermilion-crimson);
+            font-size: 1.15rem;
+            margin-top: 1.2rem;
+            margin-bottom: 0.5rem;
+            border-left: 3px solid var(--antique-gold);
+            padding-left: 0.6rem;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 992px) {
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .top-notice { display: none; }
+            .mobile-toggle { display: block; }
+            .nav-links {
+                position: fixed;
+                top: 90px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 90px);
+                background-color: var(--paper-cream);
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 2.5rem;
+                gap: 1.8rem;
+                transition: var(--transition);
+                border-top: 2px solid var(--antique-gold);
+            }
+            .nav-links.active { left: 0; }
+            .filter-controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .search-box { width: 100%; }
+            .modal-meta-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .footer-bottom {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Top Notice Bar -->
+    <div class="top-notice">
+        <div class="container">
+            <div>
+                <i class="fa-solid fa-feather-pointed" style="color:var(--antique-gold);"></i> 慈濟大學 智慧管理學院 | College of Smart Management
+            </div>
+            <div>
+                <a href="index.html" data-i18n="nav_home">返回首頁</a>
+                <a href="#contact" data-i18n="contact_us">聯絡我們</a>
+                <a href="https://gms.tcu.edu.tw" target="_blank">GMS Email</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Classical Navigation Bar -->
+    <header class="navbar">
+        <div class="container">
+            <a href="index.html" class="brand-logo">
+                <div class="chinese-stamp">經管</div>
+                <div class="brand-text">
+                    <h1 data-i18n="dept_title">慈濟大學 經營管理學系</h1>
+                    <span data-i18n="dept_en">Department of Business Management, TCU</span>
+                </div>
+            </a>
+
+            <nav class="nav-links" id="navLinks">
+                <a href="index.html#about" class="nav-item" data-i18n="nav_about">系所旨趣</a>
+                <a href="index.html#news" class="nav-item" data-i18n="nav_news">最新消息</a>
+                <a href="studentworks.html" class="nav-item active" data-i18n="nav_works">學生作品</a>
+                <a href="index.html#honors" class="nav-item" data-i18n="nav_honors">榮譽榜</a>
+                <a href="#contact" class="nav-item" data-i18n="nav_contact">聯絡資訊</a>
+            </nav>
+
+            <div class="header-actions">
+                <button class="lang-btn" onclick="toggleLanguage()">
+                    <i class="fa-solid fa-globe"></i>
+                    <span id="langText">EN</span>
+                </button>
+                <button class="mobile-toggle" onclick="toggleMobileNav()">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Scroll Styled Page Hero Header -->
+    <section class="page-banner">
+        <div class="container">
+            <div class="scroll-header-frame">
+                <div class="scroll-header-inner">
+                    <span class="seal-badge seal-badge-gold" style="margin-bottom: 0.8rem;" data-i18n="banner_tag">成果薈萃</span>
+                    <h1 data-i18n="banner_title">學生實務與研究作品展示館</h1>
+                    <p data-i18n="banner_desc">匯聚本系學子於地方創生、永續綠領、AI商務與行銷品牌之專題智慧，展現理實融通之管理長才。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Main Gallery -->
+    <section class="portfolio-section">
+        <div class="container">
+            
+            <!-- Controls: Category Tabs & Search Bar -->
+            <div class="filter-controls">
+                <div class="filter-tabs">
+                    <button class="tab-btn active" onclick="filterWorks('ALL')" data-i18n="tab_all">全部作品</button>
+                    <button class="tab-btn" onclick="filterWorks('REVITALIZATION')" data-i18n="tab_rev">地方創生</button>
+                    <button class="tab-btn" onclick="filterWorks('SUSTAINABILITY')" data-i18n="tab_sus">永續環保</button>
+                    <button class="tab-btn" onclick="filterWorks('AI_TECH')" data-i18n="tab_ai">AI與商務應用</button>
+                    <button class="tab-btn" onclick="filterWorks('MARKETING')" data-i18n="tab_mkt">行銷與品牌</button>
+                </div>
+
+                <div class="search-box">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="workSearchInput" onkeyup="searchWorks()" placeholder="搜尋作品名稱、作者或指導老師..." data-i18n-ph="search_placeholder">
+                </div>
+            </div>
+
+            <!-- Works Portfolio Grid Container -->
+            <div class="works-grid" id="worksGrid">
+                <!-- Dynamically Rendered via JavaScript -->
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Classical Footer Section -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h2>慈濟大學 經營管理學系</h2>
+                    <p class="sub">Department of Business Management, Tzu Chi University</p>
+                    <p class="desc" data-i18n="footer_desc">培育兼具專業素養、全球視野、領導溝通與人文關懷之優質管理人才。</p>
+                </div>
+
+                <div class="footer-col">
+                    <h4 data-i18n="footer_quick">導引捷徑</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html#about" data-i18n="nav_about">系所旨趣</a></li>
+                        <li><a href="index.html#news" data-i18n="nav_news">最新消息</a></li>
+                        <li><a href="studentworks.html" data-i18n="nav_works">學生作品</a></li>
+                        <li><a href="https://www.tcu.edu.tw" target="_blank" data-i18n="tcu_main">慈濟大學首頁</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4 data-i18n="footer_resources">相關資源</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">課程地圖</a></li>
+                        <li><a href="#">專任師資</a></li>
+                        <li><a href="#">招生資訊</a></li>
+                        <li><a href="#">常用表單</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4 data-i18n="footer_contact">聯絡資訊</h4>
+                    <ul class="contact-info">
+                        <li>
+                            <i class="fa-solid fa-location-dot"></i>
+                            <span>97004 花蓮市介仁街 67 號 (介仁校區)</span>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-phone"></i>
+                            <span>03-857-2677 分機 31682</span>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-envelope"></i>
+                            <span>ss62@gms.tcu.edu.tw</span>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-building"></i>
+                            <span>辦公室：經管系系辦公室</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div>&copy; 2026 慈濟大學 經營管理學系 版權所有</div>
+                <div>Designed in Chinese Classical Aesthetic for TCU BM Department</div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Student Project Detail Modal -->
+    <div class="modal" id="projectModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></button>
+            <div class="modal-header">
+                <span class="seal-badge" id="modalCategory">分類</span>
+                <h3 id="modalTitle">作品標題</h3>
+                
+                <div class="modal-meta-grid">
+                    <div><strong><i class="fa-solid fa-user-pen"></i> 專案成員：</strong> <span id="modalAuthors">成員</span></div>
+                    <div><strong><i class="fa-solid fa-chalkboard-user"></i> 指導教授：</strong> <span id="modalAdvisor">導師</span></div>
+                    <div><strong><i class="fa-solid fa-calendar-check"></i> 完成年份：</strong> <span id="modalYear">2025</span></div>
+                    <div><strong><i class="fa-solid fa-trophy"></i> 獲獎紀錄：</strong> <span id="modalAward">無</span></div>
+                </div>
+            </div>
+
+            <div class="modal-body" id="modalBody">
+                <!-- Content Populated via JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Data & Interactivity -->
+    <script>
+        // Real Student Works Dataset
+        const studentWorksData = [
+            {
+                id: "work-01",
+                title: "「嶼食織心」：東台灣特色農業品牌再造與永續商業模式",
+                category: "REVITALIZATION",
+                categoryName: "地方創生",
+                sealClass: "seal-badge-gold",
+                image: "https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=800&q=80",
+                authors: "陳品妤、張智豪、許智翔",
+                advisor: "林真如 教授",
+                year: "2025年",
+                award: "教育部 USR 優良專案 / 全國競賽亞軍",
+                likes: 128,
+                stamped: false,
+                desc: "整合花蓮在地有機小農與原住民手作織品，導入體驗行銷與綠色供應鏈，打造「嶼食織心」品牌，為地方賦能。",
+                content: `
+                    <h4>研究背景與動機</h4>
+                    <p>東台灣擁有豐富的農業與原住民傳統文化，然而常因地理位置遠隔與缺乏品牌包裝，導致產品附加價值難以提升。「嶼食織心」計畫旨在運用現代經營管理學理，協助小農接軌現代行銷趨勢。</p>
+                    <h4>專案執行亮點</h4>
+                    <p>1. 建立「食織共生」品牌標籤，推動綠色短鏈供應。</p>
+                    <p>2. 運用社群媒體故事行銷與線上直播，觸及青年消費族群，提升在地品牌知名度達 250%。</p>
+                    <p>3. 協助 12 家在地工作坊通過產銷履歷與環保友善認證。</p>
+                `
+            },
+            {
+                id: "work-02",
+                title: "運用黑水虻生物轉化技術處理沼渣之商業化評估與循環經濟模式",
+                category: "SUSTAINABILITY",
+                categoryName: "永續環保",
+                sealClass: "seal-badge-green",
+                image: "https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?auto=format&fit=crop&w=800&q=80",
+                authors: "林聖傑、王若涵、黃柏鈞",
+                advisor: "邱勝賢 教授",
+                year: "2025年",
+                award: "校園綠色創新專題 特優",
+                likes: 95,
+                stamped: false,
+                desc: "評估黑水虻生物分解有機沼渣的商業效益，建立「有機廢棄物 - 高蛋白質飼料 - 生物有機肥」的閉環循環經濟價值鏈。",
+                content: `
+                    <h4>研究背景與動機</h4>
+                    <p>因應氣候變遷與淨零排放目標，養豬與畜牧業產生的沼渣處置成為永續農業重大挑戰。本研究探討以黑水虻為媒介的生物轉化法，實現有機廢棄物資源化。</p>
+                    <h4>專案執行亮點</h4>
+                    <p>1. 進行完整財務 NPV 與 IRR 評估，證明生物處理廠具備商業投資可行性。</p>
+                    <p>2. 規劃「廢棄物再利用」碳權抵換機制，為企業客戶提供 ESG 減碳方案。</p>
+                `
+            },
+            {
+                id: "work-03",
+                title: "生成式 AI 在商務競賽與企業考題設計之應用與成效分析",
+                category: "AI_TECH",
+                categoryName: "AI與商務應用",
+                sealClass: "seal-badge-blue",
+                image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80",
+                authors: "蔡旻修、郭雅婷",
+                advisor: "李宏遠 教授",
+                year: "2025年",
+                award: "智慧商務創新應用獎",
+                likes: 112,
+                stamped: false,
+                desc: "探索大型語言模型（LLM）於管理學科情境模擬試題與企業人才測驗的自動生成機制，提升出題效率與客觀度。",
+                content: `
+                    <h4>研究背景與動機</h4>
+                    <p>隨生成式 AI 崛起，HR 與教學單位需要更高品質且富含案例分析情境的測驗題庫。本專案建構專屬Prompt工程邏輯，實現高階管理試題之自動化生成。</p>
+                    <h4>專案執行亮點</h4>
+                    <p>1. 設計結合 SWOT 與價值鏈分析的動態情境模擬題，測驗評量準確度高達 89%。</p>
+                    <p>2. 導入 RAG（檢索增強生成）技術，確保生成試題符合臺灣企業法令與商業情境。</p>
+                `
+            },
+            {
+                id: "work-04",
+                title: "後疫情時代花蓮有機休閒農場之體驗行銷與品牌忠誠度研究",
+                category: "MARKETING",
+                categoryName: "行銷與品牌",
+                sealClass: "seal-badge",
+                image: "https://images.unsplash.com/photo-1592417817098-8f3d6eb231fc?auto=format&fit=crop&w=800&q=80",
+                authors: "鄭宇軒、彭嘉欣、羅文彬",
+                advisor: "陳淑芬 教授",
+                year: "2024年",
+                award: "全國休閒農業行銷競賽 優等",
+                likes: 84,
+                stamped: false,
+                desc: "以結構方程模型（SEM）分析體驗行銷四要素（感官、情感、思考、行動）對觀光客品牌忠誠度與再訪意願之影響。",
+                content: `
+                    <h4>研究背景與動機</h4>
+                    <p>東台灣休閒農場發展蓬勃，但面臨同質化競爭。本專案深入花蓮多家指標性農場，進行廣泛問卷調查與深度訪談，提供差異化行銷建言。</p>
+                    <h4>專案執行亮點</h4>
+                    <p>1. 回收有效問卷 520 份，運用 SPSS 與 AMOS 進行嚴謹量化數據分析。</p>
+                    <p>2. 提出「感官DIY體驗 + 減碳認證禮盒」的整合行銷策略組合，獲受訪農場採用。</p>
+                `
+            },
+            {
+                id: "work-05",
+                title: "智慧零售與無人商店之顧客接受度與服務補救策略",
+                category: "AI_TECH",
+                categoryName: "AI與商務應用",
+                sealClass: "seal-badge-blue",
+                image: "https://images.unsplash.com/photo-1556742049-0a670f4a4591?auto=format&fit=crop&w=800&q=80",
+                authors: "廖冠宇、施家豪",
+                advisor: "張明傑 教授",
+                year: "2024年",
+                award: "校內專題成果展 二等獎",
+                likes: 76,
+                stamped: false,
+                desc: "探討 AI 影像辨識與 RFID 無人便利商店在大學校園的普及障礙，並設計個人化 AI 客服補救機制。",
+                content: `
+                    <h4>研究背景與動機</h4>
+                    <p>無人商店雖然降低了人力成本，但當結帳失敗或系統異常時，極易造成顧客流失。本研究旨在建立無人門市的服務補救標準作業流程（SOP）。</p>
+                    <h4>專案執行亮點</h4>
+                    <p>1. 結合 UTAUT2 科技接受模型，釐清影響學生使用無人商店的核心因子。</p>
+                    <p>2. 開發 LINE Bot 即時客服對接模組，將服務異常補救時間縮短至 3 分鐘內。</p>
+                `
+            },
+            {
+                id: "work-06",
+                title: "慢城花蓮：太魯閣周邊原鄉部落綠色旅遊與文化品牌建構",
+                category: "REVITALIZATION",
+                categoryName: "地方創生",
+                sealClass: "seal-badge-gold",
+                image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80",
+                authors: "楊雅婷、周子傑、高佳琪",
+                advisor: "林真如 教授",
+                year: "2024年",
+                award: "USR 永續社會實踐獎",
+                likes: 105,
+                stamped: false,
+                desc: "結合太魯閣太魯閣族獵人文化與永續旅遊思維，設計低碳體驗遊程，建立兼顧文化保存與經濟收益之部落品牌。",
+                content: `
+                    <h4>研究背景與動機</h4>
+                    <p>大自然災害對部落觀光造成衝擊，本專案協助在地原鄉透過「低密度、高品質、文化深度」的慢城旅遊轉型，重新建構部落產業韌性。</p>
+                    <h4>專案執行亮點</h4>
+                    <p>1. 協助部落規劃 3 條低碳徒步導覽路線與傳統工藝手作工作坊。</p>
+                    <p>2. 建立綠色收益分潤機制，將 15% 營收挹注於部落長者照顧基金。</p>
+                `
+            }
+        ];
+
+        // Language Translation State
+        let currentLang = 'zh';
+
+        const translations = {
+            zh: {
+                nav_home: "返回首頁",
+                contact_us: "聯絡我們",
+                dept_title: "慈濟大學 經營管理學系",
+                dept_en: "Department of Business Management, TCU",
+                nav_about: "系所旨趣",
+                nav_news: "最新消息",
+                nav_works: "學生作品",
+                nav_honors: "榮譽榜",
+                nav_contact: "聯絡資訊",
+                banner_tag: "成果薈萃",
+                banner_title: "學生實務與研究作品展示館",
+                banner_desc: "匯聚本系學子於地方創生、永續綠領、AI商務與行銷品牌之專題智慧，展現理實融通之管理長才。",
+                tab_all: "全部作品",
+                tab_rev: "地方創生",
+                tab_sus: "永續環保",
+                tab_ai: "AI與商務應用",
+                tab_mkt: "行銷與品牌",
+                search_placeholder: "搜尋作品名稱、作者或指導老師...",
+                footer_desc: "培育兼具專業素養、全球視野、領導溝通與人文關懷之優質管理人才。",
+                footer_quick: "導引捷徑",
+                footer_resources: "相關資源",
+                footer_contact: "聯絡資訊"
+            },
+            en: {
+                nav_home: "Home",
+                contact_us: "Contact Us",
+                dept_title: "Department of Business Management",
+                dept_en: "Tzu Chi University",
+                nav_about: "About",
+                nav_news: "News",
+                nav_works: "Student Works",
+                nav_honors: "Honors",
+                nav_contact: "Contact",
+                banner_tag: "Student Showcase",
+                banner_title: "Student Projects & Research Gallery",
+                banner_desc: "Showcasing student achievements in local revitalization, ESG sustainability, AI business tech, and marketing strategies.",
+                tab_all: "All Projects",
+                tab_rev: "Local Revitalization",
+                tab_sus: "Sustainability",
+                tab_ai: "AI & Tech",
+                tab_mkt: "Marketing",
+                search_placeholder: "Search titles, authors, or advisors...",
+                footer_desc: "Developing business management leaders with expertise, global vision, and ethical values.",
+                footer_quick: "Quick Links",
+                footer_resources: "Resources",
+                footer_contact: "Contact Info"
+            }
+        };
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'zh' ? 'en' : 'zh';
+            document.getElementById('langText').innerText = currentLang === 'zh' ? 'EN' : '中文';
+            
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[currentLang][key]) {
+                    el.innerText = translations[currentLang][key];
+                }
+            });
+
+            document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+                const key = el.getAttribute('data-i18n-ph');
+                if (translations[currentLang][key]) {
+                    el.placeholder = translations[currentLang][key];
+                }
+            });
+        }
+
+        // Works Render Logic
+        let activeCategory = 'ALL';
+
+        function renderWorks(items) {
+            const grid = document.getElementById('worksGrid');
+            grid.innerHTML = '';
+
+            if (items.length === 0) {
+                grid.innerHTML = `
+                    <div style="grid-column: 1/-1; text-align: center; padding: 4rem; color: var(--ink-slate);">
+                        <i class="fa-regular fa-folder-open" style="font-size: 3rem; margin-bottom: 1rem; color: var(--antique-gold); display: block;"></i>
+                        未搜尋到符合條件之學生作品
+                    </div>`;
+                return;
+            }
+
+            items.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'work-card';
+
+                card.innerHTML = `
+                    <div class="work-cover" style="background-image: url('${item.image}');">
+                        <div class="work-cover-overlay">
+                            <span class="seal-badge ${item.sealClass}">${item.categoryName}</span>
+                        </div>
+                    </div>
+                    <div class="work-body">
+                        <h3 class="work-title">${item.title}</h3>
+                        <div class="work-authors"><i class="fa-solid fa-users"></i> ${item.authors} | 指導：${item.advisor}</div>
+                        <p class="work-desc">${item.desc}</p>
+                        <div class="work-footer">
+                            <button class="btn-classical" onclick="openProjectModal('${item.id}')">
+                                詳閱報告 <i class="fa-solid fa-angle-right"></i>
+                            </button>
+                            <button class="stamp-btn ${item.stamped ? 'stamped' : ''}" id="stamp-btn-${item.id}" onclick="toggleStamp('${item.id}', event)">
+                                <i class="fa-solid fa-stamp"></i> 賞讚 <span id="like-count-${item.id}">${item.likes}</span>
+                            </button>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function filterWorks(category) {
+            activeCategory = category;
+            const buttons = document.querySelectorAll('.filter-tabs .tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            document.getElementById('workSearchInput').value = '';
+
+            if (category === 'ALL') {
+                renderWorks(studentWorksData);
+            } else {
+                const filtered = studentWorksData.filter(i => i.category === category);
+                renderWorks(filtered);
+            }
+        }
+
+        function searchWorks() {
+            const query = document.getElementById('workSearchInput').value.toLowerCase();
+            const filtered = studentWorksData.filter(item => {
+                const matchesCat = activeCategory === 'ALL' || item.category === activeCategory;
+                const matchesQuery = item.title.toLowerCase().includes(query) ||
+                                     item.authors.toLowerCase().includes(query) ||
+                                     item.advisor.toLowerCase().includes(query) ||
+                                     item.desc.toLowerCase().includes(query);
+                return matchesCat && matchesQuery;
+            });
+            renderWorks(filtered);
+        }
+
+        // Interactive Red Stamp Like Counter Function
+        function toggleStamp(id, event) {
+            event.stopPropagation();
+            const item = studentWorksData.find(w => w.id === id);
+            if (!item) return;
+
+            const btn = document.getElementById(`stamp-btn-${id}`);
+            const countEl = document.getElementById(`like-count-${id}`);
+
+            if (!item.stamped) {
+                item.stamped = true;
+                item.likes += 1;
+                btn.classList.add('stamped');
+            } else {
+                item.stamped = false;
+                item.likes -= 1;
+                btn.classList.remove('stamped');
+            }
+            countEl.innerText = item.likes;
+        }
+
+        // Modal Popups
+        function openProjectModal(id) {
+            const item = studentWorksData.find(w => w.id === id);
+            if (!item) return;
+
+            document.getElementById('modalCategory').innerText = item.categoryName;
+            document.getElementById('modalCategory').className = `seal-badge ${item.sealClass}`;
+            document.getElementById('modalTitle').innerText = item.title;
+            document.getElementById('modalAuthors').innerText = item.authors;
+            document.getElementById('modalAdvisor').innerText = item.advisor;
+            document.getElementById('modalYear').innerText = item.year;
+            document.getElementById('modalAward').innerText = item.award;
+            document.getElementById('modalBody').innerHTML = item.content;
+
+            document.getElementById('projectModal').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('projectModal').classList.remove('active');
+        }
+
+        window.onclick = function(e) {
+            const modal = document.getElementById('projectModal');
+            if (e.target === modal) closeModal();
+        };
+
+        function toggleMobileNav() {
+            document.getElementById('navLinks').classList.toggle('active');
+        }
+
+        window.onload = function() {
+            renderWorks(studentWorksData);
+        };
+    </script>
+</body>
+</html>
